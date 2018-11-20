@@ -6,8 +6,11 @@ const bip39 = require("bip39");
 const jsonReader = require('jsonfile');
 const appConfig = jsonReader.readFileSync('./config.json'); // конфиг
 
+smartholdemApi.setPreferredNode(appConfig.smartholdem.preferredNode); // default node
+smartholdemApi.init(appConfig.smartholdem.network); //main or dev
+
 /* GET home page. */
-router.get('/getnewaddress', function(req, res, next) {
+router.get('/getnewaddress', function (req, res, next) {
     let MNEMONIC = bip39.generateMnemonic();
     let PUB_KEY = sth.crypto.getKeys(MNEMONIC).publicKey;
     let ADDR = sth.crypto.getAddress(PUB_KEY);
@@ -22,15 +25,38 @@ router.get('/getnewaddress', function(req, res, next) {
 });
 
 
-router.post('/sendtoaddress', function(req, res, next) {
-    console.log(req.headers);
+router.post('/sendtoaddress', function (req, res, next) {
+    // console.log(req.headers);
     if (appConfig.app.password === req.headers['app-password']) {
-        res.json({"success": true, "result": req.headers});
+        let vendorField = null;
+
+        if (req.body.comment) {
+            vendorField = req.body.comment;
+        }
+
+        let transaction = smartholdemApi.createTransaction(
+            appConfig.smartholdem.masterAccount.password,
+            req.body.address,
+            req.body.amount * 10 ** 8,
+            {"vendorField": vendorField}
+        );
+
+        console.log(transaction);
+
+        smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
+            console.log(responseSend);
+            if (responseSend.success === true) {
+                res.json(responseSend);
+            } else {
+                res.json({"err": true, "code": 2, "comment": "err send tx"});
+            }
+        });
+
+
     } else {
-        res.json({"err": true, "code": 1, "comment": "authorize fail"})
+        res.json({"err": true, "code": 1, "comment": "authorize fail"});
     }
 });
-
 
 
 module.exports = router;
