@@ -1,3 +1,9 @@
 {
-  "preferedNode": "127.0.0.1"
+  "app": {
+    "port": 3000
+  },
+  "smartholdem":{
+    "preferedNode": "127.0.0.1",
+    "network": "dev"
+  }
 }
