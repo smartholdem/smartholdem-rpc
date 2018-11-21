@@ -48,7 +48,7 @@ Returns a new SmartHoldem address for receiving payments.
 ```shell
 curl -k -X GET "http://localhost:3000/api/getnewaddress"
 -H "accept: application/json"
--H "app-Password: 12345678"
+-H "app-password: 12345678"
 ```
 
 json result:
@@ -64,6 +64,12 @@ json result:
 - sendtoaddress <smartholdemaddress> <amount> [comment]
 
 Send STH from master address
+
+```
+curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
+-d '{"address":"SeZLuyhhYf2qxs4ArPJ71oEu3x8EsVw51C","amount":12.01,"comment":"hello"}'
+http://localhost:3000/api/sendtoaddress
+```
 
 - sendfrom
 
