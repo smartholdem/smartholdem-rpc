@@ -41,7 +41,7 @@ forever start bin/www
 
 default app port: 3000
 
-- getnewaddress
+#### getnewaddress
 
 Returns a new SmartHoldem address for receiving payments.
 
@@ -61,7 +61,7 @@ json result:
 }
 ```
 
-- sendtoaddress <address recipient> <amount> [comment]
+#### sendtoaddress <address recipient> <amount> [comment]
 
 Send STH from master address
 
@@ -71,7 +71,7 @@ curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
 http://localhost:3000/api/sendtoaddress
 ```
 
-- sendfrom <senderpassword> <address recipient> <amount> [comment]
+#### sendfrom <senderpassword> <address recipient> <amount> [comment]
 
 Send from to
 
