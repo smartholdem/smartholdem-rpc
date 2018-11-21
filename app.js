@@ -7,7 +7,7 @@ const jsonReader = require('jsonfile');
 var appConfig = jsonReader.readFileSync('./config.json'); // конфиг
 
 process.env.PORT = appConfig.app.port;
-
+console.log("Running on port:",process.env.PORT);
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 
