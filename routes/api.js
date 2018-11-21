@@ -30,7 +30,7 @@ router.get('/getnewaddress', function (req, res, next) {
 
 
 router.post('/sendtoaddress', function (req, res, next) {
-    // console.log(req.headers);
+
     if (appConfig.app.password === req.headers['app-password']) {
         let vendorField = null;
 
@@ -45,10 +45,7 @@ router.post('/sendtoaddress', function (req, res, next) {
             {"vendorField": vendorField}
         );
 
-        // console.log(transaction);
-
         smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
-            // console.log(responseSend);
             if (responseSend.success === true) {
                 res.json(responseSend);
             } else {
@@ -56,16 +53,14 @@ router.post('/sendtoaddress', function (req, res, next) {
             }
         });
 
-
     } else {
         res.json({"err": true, "code": 1, "comment": "authorize fail"});
     }
 });
 
-
-
+// send assets from custom address
 router.post('/sendfrom', function (req, res, next) {
-    // console.log(req.headers);
+
     if (appConfig.app.password === req.headers['app-password']) {
         let vendorField = null;
 
@@ -80,10 +75,8 @@ router.post('/sendfrom', function (req, res, next) {
             {"vendorField": vendorField}
         );
 
-        // console.log(transaction);
-
         smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
-            // console.log(responseSend);
+
             if (responseSend.success === true) {
                 res.json(responseSend);
             } else {
@@ -96,5 +89,6 @@ router.post('/sendfrom', function (req, res, next) {
         res.json({"err": true, "code": 1, "comment": "authorize fail"});
     }
 });
+
 
 module.exports = router;
