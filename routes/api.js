@@ -11,17 +11,21 @@ smartholdemApi.init(appConfig.smartholdem.network); //main or dev
 
 /* GET home page. */
 router.get('/getnewaddress', function (req, res, next) {
-    let MNEMONIC = bip39.generateMnemonic();
-    let PUB_KEY = sth.crypto.getKeys(MNEMONIC).publicKey;
-    let ADDR = sth.crypto.getAddress(PUB_KEY);
+    if (appConfig.app.password === req.headers['app-password']) {
+        let MNEMONIC = bip39.generateMnemonic();
+        let PUB_KEY = sth.crypto.getKeys(MNEMONIC).publicKey;
+        let ADDR = sth.crypto.getAddress(PUB_KEY);
 
-    let privateData = {
-        "pass": MNEMONIC,
-        "pubKey": PUB_KEY,
-        "addr": ADDR
-    };
+        let privateData = {
+            "pass": MNEMONIC,
+            "pubKey": PUB_KEY,
+            "addr": ADDR
+        };
 
-    res.json(privateData);
+        res.json(privateData);
+    } else {
+        res.json({"err": true, "code": 1, "comment": "authorize fail"});
+    }
 });
 
 

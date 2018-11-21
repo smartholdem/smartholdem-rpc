@@ -39,11 +39,19 @@ forever start bin/www
 
 ### API
 
+default app port: 3000
+
 - getnewaddress
+
+Returns a new SmartHoldem address for receiving payments.
 
 ```
 GET http://localhost:3000/api/getnewaddress
 ```
+
+params:
+
+
 
 - sendtoaddress
 
