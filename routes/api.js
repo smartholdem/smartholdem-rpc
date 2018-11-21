@@ -41,7 +41,7 @@ router.post('/sendtoaddress', function (req, res, next) {
         let transaction = smartholdemApi.createTransaction(
             appConfig.smartholdem.masterAccount.password,
             req.body.address,
-            req.body.amount * 10 * 8,
+            req.body.amount * 10 ** 8,
             {"vendorField": vendorField}
         );
 
@@ -76,7 +76,7 @@ router.post('/sendfrom', function (req, res, next) {
         let transaction = smartholdemApi.createTransaction(
             req.body.senderpassword,
             req.body.address,
-            req.body.amount * 10 * 8,
+            req.body.amount * 10 ** 8,
             {"vendorField": vendorField}
         );
 
