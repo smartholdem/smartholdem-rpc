@@ -1,4 +1,6 @@
-# smartholdem-rpc
+# SmartHoldem RPC Daemon
+
+Designed to remotely manage your assets through RPC API as in bitcoin
 
 development process..
 
@@ -36,4 +38,12 @@ forever start bin/www
 ```
 
 ### API
+
+- getnewaddress
+
+GET http://localhost:3000/api/getnewaddress
+
+- sendtoaddress
+
+- sendfrom
 
