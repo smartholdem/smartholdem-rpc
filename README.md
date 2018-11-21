@@ -41,7 +41,9 @@ forever start bin/www
 
 - getnewaddress
 
+```
 GET http://localhost:3000/api/getnewaddress
+```
 
 - sendtoaddress
 
