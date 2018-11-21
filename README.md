@@ -51,7 +51,22 @@ GET http://localhost:3000/api/getnewaddress
 
 params:
 
+```
+headers: {
+        "Content-Type": "application/json",
+        "app-Password": appConfig.app.password
+    }
+```
 
+json result:
+
+```json
+{
+  "pass": "caught reform outer advice cross day voice manual brisk robot outer broken",
+  "pubKey": "02d902591e96dc0f13bbe6b443e9968dbdcc5c6b64b7af957051aff4de4c43c99f",
+  "addr": "SNKebca3nSrkfQwPpatkPS6QbfozTk7gZd"
+}
+```
 
 - sendtoaddress
 
