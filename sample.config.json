@@ -1,0 +1,14 @@
+{
+  "app": {
+    "port": 3000,
+    "password": "12345678",
+    "apiurl": "http://localhost:3000/api"
+  },
+  "smartholdem":{
+    "preferredNode": "127.0.0.1",
+    "network": "main",
+    "masterAccount": {
+      "password": "passphrase 12 words here"
+    }
+  }
+}
