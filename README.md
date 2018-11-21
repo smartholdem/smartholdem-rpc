@@ -32,7 +32,7 @@ npm install
 }
 ```
 
-2. run
+2. run app
 ```
 forever start bin/www
 ```
@@ -45,17 +45,10 @@ default app port: 3000
 
 Returns a new SmartHoldem address for receiving payments.
 
-```
-GET http://localhost:3000/api/getnewaddress
-```
-
-params:
-
-```
-headers: {
-        "Content-Type": "application/json",
-        "app-Password": appConfig.app.password
-    }
+```shell
+curl -k -X GET "http://localhost:3000/api/getnewaddress"
+-H "accept: application/json"
+-H "app-Password: 12345678"
 ```
 
 json result:
@@ -68,7 +61,12 @@ json result:
 }
 ```
 
-- sendtoaddress
+- sendtoaddress <smartholdemaddress> <amount> [comment]
+
+Send STH from master address
 
 - sendfrom
 
+
+
+Note: fore more info see examples
