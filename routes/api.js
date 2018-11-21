@@ -83,7 +83,7 @@ router.post('/sendfrom', function (req, res, next) {
         // console.log(transaction);
 
         smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
-            console.log(responseSend);
+            // console.log(responseSend);
             if (responseSend.success === true) {
                 res.json(responseSend);
             } else {
