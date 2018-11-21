@@ -10,7 +10,7 @@ request({
     body: {"address": "Sgx3VdXJyKGdNrtLP6J569zuWrevqA4qc1", "amount": 0.0005, "comment": "tst with php rpc requests"},
     headers: {
         "Content-Type": "application/json",
-        "app-Password": appConfig.app.password
+        "app-password": appConfig.app.password
     }
 }, function (err, res, data) {
     console.log(data);
