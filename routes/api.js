@@ -59,4 +59,38 @@ router.post('/sendtoaddress', function (req, res, next) {
 });
 
 
+
+router.post('/sendfrom', function (req, res, next) {
+    // console.log(req.headers);
+    if (appConfig.app.password === req.headers['app-password']) {
+        let vendorField = null;
+
+        if (req.body.comment) {
+            vendorField = req.body.comment;
+        }
+
+        let transaction = smartholdemApi.createTransaction(
+            req.body.senderpassword,
+            req.body.address,
+            req.body.amount * 10 ** 8,
+            {"vendorField": vendorField}
+        );
+
+        console.log(transaction);
+
+        smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
+            console.log(responseSend);
+            if (responseSend.success === true) {
+                res.json(responseSend);
+            } else {
+                res.json({"err": true, "code": 2, "comment": "err send tx"});
+            }
+        });
+
+
+    } else {
+        res.json({"err": true, "code": 1, "comment": "authorize fail"});
+    }
+});
+
 module.exports = router;
