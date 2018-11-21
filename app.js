@@ -9,7 +9,7 @@ var appConfig = jsonReader.readFileSync('./config.json'); // конфиг
 process.env.PORT = appConfig.app.port;
 process.env.address = '0.0.0.0';
 if (appConfig.app.localhostOnly) {
-    process.env.address = '127.0.0.1';
+    process.env.address = 'localhost';
 }
 
 var indexRouter = require('./routes/index');

@@ -6,7 +6,7 @@ request({
     method: 'post',
     json: true, // Use,If you are sending JSON data
     url: 'http://localhost:3000/api/sendtoaddress',
-    body: {"address": "Sgx3VdXJyKGdNrtLP6J569zuWrevqA4qc1", "amount": 0.0005, "comment": "tst with php rpc requests"},
+    body: {"address": "Sgx3VdXJyKGdNrtLP6J569zuWrevqA4qc1", "amount": 0.0005, "comment": null},
     headers: {
         "Content-Type": "application/json",
         "app-password": appConfig.app.password
