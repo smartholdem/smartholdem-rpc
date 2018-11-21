@@ -45,7 +45,7 @@ router.post('/sendtoaddress', function (req, res, next) {
             {"vendorField": vendorField}
         );
 
-        console.log(transaction);
+        // console.log(transaction);
 
         smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
             console.log(responseSend);
@@ -80,7 +80,7 @@ router.post('/sendfrom', function (req, res, next) {
             {"vendorField": vendorField}
         );
 
-        console.log(transaction);
+        // console.log(transaction);
 
         smartholdemApi.sendTransactions([transaction], (error, success, responseSend) => {
             console.log(responseSend);
