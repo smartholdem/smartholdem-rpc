@@ -1,6 +1,7 @@
 {
   "app": {
     "port": 3000,
+    "localhostOnly": true,
     "password": "12345678"
   },
   "smartholdem":{
