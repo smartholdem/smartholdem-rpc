@@ -66,7 +66,8 @@ json result:
 Send STH from master address
 
 ```
-curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
+curl -X POST
+-H "Content-Type: application/json" -H "app-password: 12345678"
 -d '{"address":"SeZLuyhhYf2qxs4ArPJ71oEu3x8EsVw51C","amount":12.01,"comment":"hello"}'
 http://localhost:3000/api/sendtoaddress
 ```

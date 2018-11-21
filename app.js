@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const jsonReader = require('jsonfile');
+var appConfig = jsonReader.readFileSync('./config.json'); // конфиг
+
+process.env.PORT = appConfig.app.port;
 
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
