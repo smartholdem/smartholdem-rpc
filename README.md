@@ -61,7 +61,7 @@ json result:
 }
 ```
 
-- sendtoaddress <smartholdemaddress> <amount> [comment]
+- sendtoaddress <address recipient> <amount> [comment]
 
 Send STH from master address
 
@@ -71,8 +71,14 @@ curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
 http://localhost:3000/api/sendtoaddress
 ```
 
-- sendfrom
+- sendfrom <senderpassword> <address recipient> <amount> [comment]
 
+Send from to
 
+```
+curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
+-d '{"senderpassword": "passphrase 12 words","address":"SeZLuyhhYf2qxs4ArPJ71oEu3x8EsVw51C","amount":12.01,"comment":"hello"}'
+http://localhost:3000/api/sendtoaddress
+```
 
 Note: fore more info see examples
