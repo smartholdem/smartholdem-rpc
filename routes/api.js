@@ -105,14 +105,15 @@ router.post('/sendmany', function (req, res, next) {
             vendorField = req.body.comment;
         }
 
-        let countRecipients = req.body.recipients.length;
+        let recipients = Object.keys(req.body.recipients);
+        let countRecipients = recipients.length;
 
         if (countRecipients > 0) {
             for (let i=0; i < countRecipients; i++) {
                 let transaction = smartholdemApi.createTransaction(
                     appConfig.smartholdem.masterAccount.password,
-                    req.body.recipients[i].address,
-                    req.body.recipients[i].amount * Math.pow(10, 8),
+                    recipients[i],
+                    req.body.recipients[recipients[i]] * Math.pow(10, 8),
                     {"vendorField": vendorField}
                 );
                 transactions.push(transaction);
@@ -128,6 +129,7 @@ router.post('/sendmany', function (req, res, next) {
         } else {
             res.json(false);
         }
+
 
     } else {
         res.json({"err": true, "code": 1, "comment": "authorize fail"});

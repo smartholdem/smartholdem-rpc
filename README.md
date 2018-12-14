@@ -87,6 +87,27 @@ curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
 http://localhost:3000/api/sendtoaddress
 ```
 
+#### sendmany recipients:{address:amount,...} [comment]
+
+Send to several addresses from master address
+
+```
+curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
+-d '{"recipients":{"SeZLuyhhYf2qxs4ArPJ71oEu3x8EsVw51C":12.01, "Scky5gWBLDuA82KmBrkvF4XGirBkTD4Kbe":1.25},"comment":"hello"}'
+http://localhost:3000/api/sendmany
+```
+
+json result:
+
+```json
+{ success: true,
+  transactionIds:
+   [ 'd5cf571adfb262f8c894b227bb469a8c3a9d90faf5df60060b591b8aa49f3335',
+     '4e25493c13a1b2df64760436dd68c864cefa0accae0b3814d4e2e41a60521936',
+     '63e1ef2cfa0bba71245dafc15b3e81d7b1e57969230286c08342b6384e85bc4c' ]
+     }
+```
+
 Note: fore more info see tests
 
 # IMPORTANT NOTE
