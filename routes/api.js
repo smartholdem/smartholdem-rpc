@@ -95,5 +95,43 @@ router.post('/sendfrom', function (req, res, next) {
     }
 });
 
+router.post('/sendmany', function (req, res, next) {
+
+    let transactions = [];
+    if (appConfig.app.password === req.headers['app-password']) {
+        let vendorField = null;
+
+        if (req.body.comment) {
+            vendorField = req.body.comment;
+        }
+
+        let countRecipients = req.body.recipients.length;
+
+        if (countRecipients > 0) {
+            for (let i=0; i < countRecipients; i++) {
+                let transaction = smartholdemApi.createTransaction(
+                    appConfig.smartholdem.masterAccount.password,
+                    req.body.recipients[i].address,
+                    req.body.recipients[i].amount * Math.pow(10, 8),
+                    {"vendorField": vendorField}
+                );
+                transactions.push(transaction);
+            }
+
+            smartholdemApi.sendTransactions(transactions, (error, success, responseSend) => {
+                if (responseSend.success === true) {
+                    res.json(responseSend);
+                } else {
+                    res.json({"err": true, "code": 2, "comment": "err send tx"});
+                }
+            });
+        } else {
+            res.json(false);
+        }
+
+    } else {
+        res.json({"err": true, "code": 1, "comment": "authorize fail"});
+    }
+});
 
 module.exports = router;
