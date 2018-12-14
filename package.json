@@ -1,10 +1,11 @@
 {
   "name": "smartholdem-rpc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
+  "author": "technologiespro",
   "dependencies": {
     "bip39": "^2.5.0",
     "cookie-parser": "~1.4.3",
