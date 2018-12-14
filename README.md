@@ -87,4 +87,4 @@ curl -k -H "Content-Type: application/json" -H "app-password: 12345678" -X POST
 http://localhost:3000/api/sendtoaddress
 ```
 
-Note: fore more info see examples
+Note: fore more info see tests
