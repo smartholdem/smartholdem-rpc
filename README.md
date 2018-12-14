@@ -99,7 +99,7 @@ http://localhost:3000/api/sendmany
 
 json result:
 
-```json
+```
 { success: true,
   transactionIds:
    [ 'd5cf571adfb262f8c894b227bb469a8c3a9d90faf5df60060b591b8aa49f3335',
