@@ -1,6 +1,6 @@
 # SmartHoldem RPC Daemon
 
-Designed to remotely manage your assets through RPC API as in bitcoin
+Designed to remotely manage your STH assets through RPC API as in bitcoin
 
 development process..
 

@@ -16,8 +16,6 @@ var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 
 var app = express();
-// app.listen(appConfig.app.port,'127.0.0.1');
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
