@@ -15,18 +15,23 @@ npm install
 ## How to use
 
 1. rename sample.config.json in config.json and edit settings
+```shell
+mv sample.config.json config.json
+nano config.json
+```
+
 ```json
 {
   "app": {
-    "port": 3000,
-    "password": "here password app",
-    "apiurl": "http://localhost:3000/api"
+    "port": 3000, // app port for rpc connections
+    "localhostOnly": true, // use local rpc access only
+    "password": "here password app" // app password for access to the rpc
   },
   "smartholdem":{
-    "preferredNode": "Your SmartHoldem Node ip",
+    "preferredNode": "127.0.0.1", // SmartHodlem node ip
     "network": "main",
     "masterAccount": {
-      "password": "your master address passphrase 12 words here"
+      "password": "your master address passphrase 12 words here" // wallet address passphrase
     }
   }
 }
