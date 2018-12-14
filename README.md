@@ -20,7 +20,7 @@ mv sample.config.json config.json
 nano config.json
 ```
 
-```json
+```js
 {
   "app": {
     "port": 3000, // app port for rpc connections
